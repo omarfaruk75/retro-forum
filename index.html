@@ -75,8 +75,9 @@
                                     mug!</p>
                                 <div
                                     class="bg-white flex flex-row  justify-between items-center px-2 py-2 rounded-full w-full md:w-10/12">
-                                    <input type="text" class="px-2 md:px-4 outline-none" placeholder="input some text">
-                                    <button
+                                    <input id="search-box" type="text" class="px-2 md:px-4 outline-none"
+                                        placeholder="input some text">
+                                    <button onclick="handleSearch()"
                                         class="btn rounded-full bg-[#797DFC] text-white md:px-10 text-xl -ms-8">search</button>
                                 </div>
                             </div>
@@ -106,102 +107,7 @@
                     streamlined .
                 </p>
                 <div class="grid grid-cols-12 gap-2 md:gap-8">
-                    <div class=" col-span-7 md:col-span-8 space-y-6">
-                        <div class="grid grid-cols-12 bg-[#f3f3f5] rounded-xl p-2 md:p-8 ">
-                            <div class="col-span-2">
-                                <span class="text-end dot -mb-2"></span>
-                                <img class="max-w-16 " src="./images/joinforum.png" alt="">
-                            </div>
-                            <div class="col-span-10 space-y-6">
-                                <div class="flex flex-row gap-6 text-sm text-[#12132DCC]">
-                                    <span>#Music</span>
-                                    <span>Author: Awlad Hossain</span>
-                                </div>
-                                <h3 class=" text-base md:text-xl font-bold text-[#12132D] text-start">10 Kids Unaware of
-                                    Their
-                                    Halloween
-                                    Costume </h3>
-                                <p class="text-sm md:text-base text-[#12132D99] text-start">It’s one thing to subject
-                                    yourself to
-                                    ha
-                                    Halloween
-                                    costume mishap because, hey that’s your prerogative</p>
-                                <hr style="border-bottom: 2px dashed #12132D40;">
-                                <div class="flex flex-row justify-between items-center">
-                                    <div class="flex flex-row justify-start gap-2 md:gap-8 items-center">
-                                        <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
-                                                class="material-symbols-outlined">
-                                                comment
-                                            </span><span>560</span>
-                                        </p>
-                                        <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
-                                                class="material-symbols-outlined">
-                                                visibility
-                                            </span><span>1568</span>
-                                        </p>
-                                        <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
-                                                class="material-symbols-outlined">
-                                                schedule
-                                            </span><span>1560</span>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <span class="material-symbols-outlined bg-[#10B981] rounded-full p-1">
-                                            drafts
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-12 bg-[#f3f3f5] rounded-xl p-2 md:p-8 ">
-                            <div class="col-span-2">
-                                <span class="text-end dot -mb-2"></span>
-                                <img class="max-w-16 " src="./images/joinforum.png" alt="">
-                            </div>
-                            <div class="col-span-10 space-y-6">
-                                <div class="flex flex-row gap-6 text-sm text-[#12132DCC]">
-                                    <span>#Music</span>
-                                    <span>Author: Awlad Hossain</span>
-                                </div>
-                                <h3 class=" text-base md:text-xl font-bold text-[#12132D] text-start">10 Kids Unaware of
-                                    Their
-                                    Halloween
-                                    Costume </h3>
-                                <p class="text-sm md:text-base text-[#12132D99] text-start">It’s one thing to subject
-                                    yourself to
-                                    ha
-                                    Halloween
-                                    costume mishap because, hey that’s your prerogative</p>
-                                <hr style="border-bottom: 2px dashed #12132D40;">
-                                <div class="flex flex-row justify-between items-center">
-                                    <div class="flex flex-row justify-start gap-2 md:gap-8 items-center">
-                                        <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
-                                                class="material-symbols-outlined">
-                                                comment
-                                            </span><span>560</span>
-                                        </p>
-                                        <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
-                                                class="material-symbols-outlined">
-                                                visibility
-                                            </span><span>1568</span>
-                                        </p>
-                                        <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
-                                                class="material-symbols-outlined">
-                                                schedule
-                                            </span><span>1560</span>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <span class="material-symbols-outlined bg-[#10B981] rounded-full p-1">
-                                            drafts
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                    <div id="post-container" class=" col-span-7 md:col-span-8 space-y-6">
 
                     </div>
                     <div class="col-span-5 md:col-span-4 bg-[#f3f3f5] rounded-xl p-4 flex flex-col space-y-6">
@@ -273,79 +179,9 @@
                     streamlined .
                 </p>
             </div>
-            <div class="flex flex-col md:flex-row  gap-8">
-                <div class="card card-compact w-96 bg-base-100 shadow-xl p-8 ">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" /></figure>
-                    <div class="card-body space-y-1">
-                        <p class="flex flex-row justify-start items-center text-[#12132D99]"><span
-                                class="material-symbols-outlined">
-                                today
-                            </span><span>29 January 2024</span></p>
-                        <h2 class="card-title text-xl font-bold text-[12132d]">What will a mars habitat force that
-                            impact in our daily
-                            life!!!</h2>
-                        <p class="text-[#12132D99] text-base">Yes, you can run unit tests and view the results directly
-                            within the app.</p>
-                        <div class="flex flex-row justify-start items-center gap-8">
-                            <div>
-                                <img class=" w-10 h-10 rounded-full" src="./images/joinforum.png" alt="">
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold  text-[#12132D]">Cameron Williamson</h3>
-                                <p class="text-sm  text-[#12132D99]">Unknown</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-compact w-96 bg-base-100 shadow-xl p-8 ">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" /></figure>
-                    <div class="card-body space-y-1">
-                        <p class="flex flex-row justify-start items-center text-[#12132D99]"><span
-                                class="material-symbols-outlined">
-                                today
-                            </span><span>29 January 2024</span></p>
-                        <h2 class="card-title text-xl font-bold text-[12132d]">What will a mars habitat force that
-                            impact in our daily
-                            life!!!</h2>
-                        <p class="text-[#12132D99] text-base">Yes, you can run unit tests and view the results directly
-                            within the app.</p>
-                        <div class="flex flex-row justify-start items-center gap-8">
-                            <div>
-                                <img class=" w-10 h-10 rounded-full" src="./images/joinforum.png" alt="">
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold  text-[#12132D]">Cameron Williamson</h3>
-                                <p class="text-sm  text-[#12132D99]">Unknown</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-compact w-96 bg-base-100 shadow-xl p-8 ">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" /></figure>
-                    <div class="card-body space-y-1">
-                        <p class="flex flex-row justify-start items-center text-[#12132D99]"><span
-                                class="material-symbols-outlined">
-                                today
-                            </span><span>29 January 2024</span></p>
-                        <h2 class="card-title text-xl font-bold text-[12132d]">What will a mars habitat force that
-                            impact in our daily
-                            life!!!</h2>
-                        <p class="text-[#12132D99] text-base">Yes, you can run unit tests and view the results directly
-                            within the app.</p>
-                        <div class="flex flex-row justify-start items-center gap-8">
-                            <div>
-                                <img class=" w-10 h-10 rounded-full" src="./images/joinforum.png" alt="">
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold  text-[#12132D]">Cameron Williamson</h3>
-                                <p class="text-sm  text-[#12132D99]">Unknown</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="post-category" class="flex flex-col md:flex-row  gap-6">
+
+                >
             </div>
         </section>
     </main>
