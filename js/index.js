@@ -1,3 +1,5 @@
+
+
 const postFunction = async(categoryName='comedy')=>{
     const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`);
     const data = await response.json();
@@ -5,7 +7,6 @@ const postFunction = async(categoryName='comedy')=>{
    const postContainer = document.getElementById('post-container');
    postContainer.innerHTML = '';
     posts.forEach((post) => {
-        // console.log(post);
         const postContainer = document.getElementById('post-container');
         const activePost = document.getElementById('active-post');
         const div = document.createElement('div');
@@ -56,7 +57,6 @@ const postFunction = async(categoryName='comedy')=>{
 }
 
 const draftPost = (title, count)=>{
- 
    const  allDraftPost = document.getElementById('draft_post');
    const titleContainer = document.getElementById('tiltle_container');
    const div = document.createElement('div');
@@ -72,15 +72,9 @@ const draftPost = (title, count)=>{
     titleContainer.appendChild(div);
     markFunction()
 }
+//Append Child of draft Button to right side
 const markFunction = () => {
     const countMark = document.querySelector('.count-mark');
-    const dotBg = document.querySelector('.circle');
-  
-    if (dotBg.classList.contains('bg-green-600')) {
-        dotBg.classList.remove('bg-green-600');
-    } else {
-        dotBg.classList.add('bg-green-600');
-    }
     let countMarkText = parseInt(countMark.innerText); 
     countMarkText++; 
     countMark.innerText = countMarkText; 
