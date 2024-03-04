@@ -82,19 +82,14 @@ const markFunction = () => {
 }
 
 const handleSearch = () => {
-   setTimeout( loadingBarFunction(true), 2000)
-        // Activate loading bar after 2 seconds
-
+   setTimeout( loadingBarFunction(true), 2000)  // Activate loading bar after 2 seconds
         const categoryName = document.getElementById('search-box').value.toLowerCase();
-
         if (categoryName) {
             postFunction(categoryName);
         } else {
             alert('Please enter a valid category name');
         }
     }
-
-
 const loadingBarFunction = (isLoading) => {
     const loadingBar = document.getElementById('loading-bar');
     if (isLoading) {
@@ -107,10 +102,7 @@ const loadingBarFunction = (isLoading) => {
 const postCategory = async() => {
     const response = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts')
     const data = await response.json();
-    
     data.forEach((category)=>{
-        // console.log(category.title);
-
         const postCategory = document.getElementById('post-category');
         const div = document.createElement('div');
         div.innerHTML = `<div class="card card-compact bg-base-100 shadow-xl p-8 ">
