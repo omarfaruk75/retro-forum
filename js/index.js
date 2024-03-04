@@ -11,7 +11,7 @@ const postFunction = async(categoryName='comedy')=>{
         const activePost = document.getElementById('active-post');
         const div = document.createElement('div');
        
-        div.innerHTML = `<div class="grid grid-cols-12 bg-[#f3f3f5] rounded-xl p-2 md:p-8 ">
+        div.innerHTML = `<div class="grid grid-cols-12 bg-[#f3f3f5] rounded-xl p-2 md:p-8 space-x-4 ">
                             <div class=" col-span-2" id="active-post">
                                 <span class="text-end dot circle -mb-1.5" id="active-post" style="${post.isActive === true ? 'background-color: #00FF00' : 'background-color: #FF0000'}"></span>
                                 <img class="max-w-16 rounded-xl " src="${post.image}" alt="">
@@ -43,7 +43,7 @@ const postFunction = async(categoryName='comedy')=>{
                                         </p>
                                     </div>
                                     <div id="draft_post" onclick="draftPost('${post.title}', ${post.view_count})")" class="cursor-grabbing" >
-                                        <span class="material-symbols-outlined bg-[#10B981] rounded-full p-1">
+                                        <span class="material-symbols-outlined bg-[#10B981] rounded-full p-1 text-white">
                                             drafts
                                         </span>
                                     </div>

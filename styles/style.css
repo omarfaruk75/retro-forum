@@ -3,10 +3,17 @@
             width: 14px;
             background-color: #000;
             border-radius: 50%;
-        
             display: inline-block;
         }
 
         body{
           font-family: "Mulish", sans-serif;
         }
+        .tooltip span{
+          border: 1px solid #000;
+          background-color:#12132d08;
+          border-radius: 50%;
+         padding: 12px;
+        }
+
+       
