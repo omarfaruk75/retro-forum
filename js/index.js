@@ -1,11 +1,12 @@
-const postFunction = async(categoryName)=>{
-    const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?{category=categoryName}`);
+const postFunction = async(categoryName='comedy')=>{
+    const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`);
     const data = await response.json();
     const posts = data.posts;
+   const postContainer = document.getElementById('post-container');
+   postContainer.innerHTML = '';
     posts.forEach((post) => {
-        // console.log(post);
+        console.log(post);
         const postContainer = document.getElementById('post-container');
-    
         const div = document.createElement('div');
 
         div.innerHTML = `<div class="grid grid-cols-12 bg-[#f3f3f5] rounded-xl p-2 md:p-8 ">
@@ -39,7 +40,7 @@ const postFunction = async(categoryName)=>{
                                             </span><span>${post.pooste_time}</span>
                                         </p>
                                     </div>
-                                    <div id="draft-post" >
+                                    <div id="draft_post" onclick="draftPost('${post.title}', ${post.view_count})" class="cursor-grabbing" >
                                         <span class="material-symbols-outlined bg-[#10B981] rounded-full p-1">
                                             drafts
                                         </span>
@@ -50,21 +51,52 @@ const postFunction = async(categoryName)=>{
                         </div>`;
                         postContainer.appendChild(div);
     });
+     loadingBarFunction(false)
+}
+
+const draftPost = (title, count)=>{
+   const  allDraftPost = document.getElementById('draft_post');
+   const titleContainer = document.getElementById('tiltle_container');
+   const div = document.createElement('div');
+   div.innerHTML = `<div class="flex flex-row justify-between items-center bg-white p-2 rounded-xl">
+                                <h3 class="text-base font-semibold text-[#12132D] text-start">${title}
+                                </h3>
+                                <p class="flex flex-row justify-center items-center gap-4"><span
+                                        class="material-symbols-outlined">
+                                        visibility
+                                    </span><span>${count}</span>
+                                </p>
+                            </div>`;
+    // console.log(title, count);
+    titleContainer.appendChild(div);
+
 }
 
 const handleSearch = ()=>{
-
-        const value = document.getElementById('search-box').value;
-        // console.log(value);
-        if(value){
-            postFunction(value);
+        loadingBarFunction(true)
+        const categoryName = document.getElementById('search-box').value;
+        // console.log(categoryName);
+        if(categoryName){
+            postFunction(categoryName);
         }else{
             alert('please enter a valid category name')
         }
     }
+
+const loadingBarFunction = (isLoading)=>{
+    const loadingBar = document.getElementById('loading-bar');
+    if(isLoading){
+          loadingBar.classList.remove('hidden')
+    }else{
+         loadingBar.classList.add('hidden')
+    }
+ 
+}
+
 const postCategory = async() => {
     const response = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts')
     const data = await response.json();
+    
     data.forEach((category)=>{
         // console.log(category.title);
 
