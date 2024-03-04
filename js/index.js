@@ -5,13 +5,14 @@ const postFunction = async(categoryName='comedy')=>{
    const postContainer = document.getElementById('post-container');
    postContainer.innerHTML = '';
     posts.forEach((post) => {
-        console.log(post);
+        // console.log(post);
         const postContainer = document.getElementById('post-container');
+        const activePost = document.getElementById('active-post');
         const div = document.createElement('div');
-
+       
         div.innerHTML = `<div class="grid grid-cols-12 bg-[#f3f3f5] rounded-xl p-2 md:p-8 ">
-                            <div class=" col-span-2">
-                                <span class="text-end dot -mb-1.5"></span>
+                            <div class=" col-span-2" id="active-post">
+                                <span class="text-end dot circle -mb-1.5" id="active-post" style="${post.isActive === true ? 'background-color: #00FF00' : 'background-color: #FF0000'}"></span>
                                 <img class="max-w-16 rounded-xl " src="${post.image}" alt="">
                             </div>
                             <div class="col-span-10 space-y-6">
@@ -37,10 +38,10 @@ const postFunction = async(categoryName='comedy')=>{
                                         <p class="flex flex-row justify-center items-center gap-1 md:gap-4"><span
                                                 class="material-symbols-outlined">
                                                 schedule
-                                            </span><span>${post.pooste_time}</span>
+                                            </span><span>${post.posted_time}</span>
                                         </p>
                                     </div>
-                                    <div id="draft_post" onclick="draftPost('${post.title}', ${post.view_count})" class="cursor-grabbing" >
+                                    <div id="draft_post" onclick="draftPost('${post.title}', ${post.view_count})")" class="cursor-grabbing" >
                                         <span class="material-symbols-outlined bg-[#10B981] rounded-full p-1">
                                             drafts
                                         </span>
@@ -50,11 +51,12 @@ const postFunction = async(categoryName='comedy')=>{
                             </div>
                         </div>`;
                         postContainer.appendChild(div);
+                        loadingBarFunction(false)
     });
-     loadingBarFunction(false)
 }
 
 const draftPost = (title, count)=>{
+ 
    const  allDraftPost = document.getElementById('draft_post');
    const titleContainer = document.getElementById('tiltle_container');
    const div = document.createElement('div');
@@ -67,30 +69,45 @@ const draftPost = (title, count)=>{
                                     </span><span>${count}</span>
                                 </p>
                             </div>`;
-    // console.log(title, count);
     titleContainer.appendChild(div);
+    markFunction()
+}
+const markFunction = () => {
+    const countMark = document.querySelector('.count-mark');
+    const dotBg = document.querySelector('.circle');
+  
+    if (dotBg.classList.contains('bg-green-600')) {
+        dotBg.classList.remove('bg-green-600');
+    } else {
+        dotBg.classList.add('bg-green-600');
+    }
+    let countMarkText = parseInt(countMark.innerText); 
+    countMarkText++; 
+    countMark.innerText = countMarkText; 
 
 }
 
-const handleSearch = ()=>{
-        loadingBarFunction(true)
-        const categoryName = document.getElementById('search-box').value;
-        // console.log(categoryName);
-        if(categoryName){
+const handleSearch = () => {
+   setTimeout( loadingBarFunction(true), 2000)
+        // Activate loading bar after 2 seconds
+
+        const categoryName = document.getElementById('search-box').value.toLowerCase();
+
+        if (categoryName) {
             postFunction(categoryName);
-        }else{
-            alert('please enter a valid category name')
+        } else {
+            alert('Please enter a valid category name');
         }
     }
 
-const loadingBarFunction = (isLoading)=>{
+
+const loadingBarFunction = (isLoading) => {
     const loadingBar = document.getElementById('loading-bar');
-    if(isLoading){
-          loadingBar.classList.remove('hidden')
-    }else{
-         loadingBar.classList.add('hidden')
+    if (isLoading) {
+        loadingBar.classList.remove('hidden');
+    } else {
+        loadingBar.classList.add('hidden');
     }
- 
 }
 
 const postCategory = async() => {
@@ -109,7 +126,7 @@ const postCategory = async() => {
                         <p class="flex flex-row justify-start items-center text-[#12132D99]"><span
                                 class="material-symbols-outlined">
                                 today
-                            </span><span>${category.author.posted_date}</span></p>
+                            </span><span>${category.author.posted_date?category.author.posted_date:'No Publish Date'}</span></p>
                         <h2 class="card-title text-xl font-bold text-[12132d]">${category.title}</h2>
                         <p class="text-[#12132D99] text-base">${category.description.slice(0, 80)}</p>
                         <div class="flex flex-row justify-start items-center gap-8">
@@ -118,7 +135,7 @@ const postCategory = async() => {
                             </div>
                             <div>
                                 <h3 class="text-base font-bold  text-[#12132D]">${category.author.name}</h3>
-                                <p class="text-sm  text-[#12132D99]">Unknown</p>
+                                <p class="text-sm  text-[#12132D99]">${category.author.designation?category.author.designation:'unknown'}</p>
                             </div>
                         </div>
                     </div>
